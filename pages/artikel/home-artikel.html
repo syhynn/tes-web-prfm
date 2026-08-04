@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semua Artikel - Performance Group</title>
+    <link rel="icon" type="image/png" href="../../images/FAVICON.svg">
+    
+    <!-- Hubungkan ke CSS Utama Anda -->
+    <link rel="stylesheet" href="../../style.css">
+    
+    <!-- CSS Khusus untuk Skeleton, Pagination, dan Tombol Sticky Back -->
+    <style>
+        /* Tombol Kembali Sticky (Mengambang di Kiri Bawah) */
+        .btn-sticky-back {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: #222222;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 998;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-sticky-back:hover {
+            background-color: #e61d25;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(230, 29, 37, 0.4);
+        }
+
+        /* Animasi Shimmer untuk Skeleton */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .skeleton {
+            background: #e2e8f0;
+            background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 4px;
+        }
+
+        /* Pengaturan Ukuran Skeleton dalam Card */
+        .skeleton-img {
+            width: 100%;
+            height: 220px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .skeleton-date {
+            width: 30%;
+            height: 14px;
+            margin-bottom: 15px;
+        }
+
+        .skeleton-title {
+            width: 85%;
+            height: 24px;
+            margin-bottom: 15px;
+        }
+
+        .skeleton-text {
+            width: 100%;
+            height: 14px;
+            margin-bottom: 8px;
+        }
+
+        .skeleton-text.short {
+            width: 70%;
+            margin-bottom: 25px;
+        }
+
+        .skeleton-link {
+            width: 40%;
+            height: 16px;
+            margin-top: auto;
+        }
+
+        /* Styling Pagination */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 50px;
+            padding-bottom: 20px;
+        }
+
+        .page-link {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: #ffffff;
+            color: #0b1f3a;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .page-link:hover {
+            background-color: #f2f7fb;
+            color: #e61d25;
+            transform: translateY(-2px);
+        }
+
+        .page-link.active {
+            background-color: #e61d25;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(230, 29, 37, 0.3);
+        }
+
+        .page-link.next {
+            width: auto;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 768px) {
+            .btn-sticky-back {
+                bottom: 20px;
+                left: 20px;
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tombol Kembali Sticky (Mengambang) -->
+    <a href="../../index.html" class="btn-sticky-back" title="Kembali ke Beranda">
+        &larr; Kembali
+    </a>
+
+    <!-- Header / Navigation (Format sama dengan index) -->
+    <header>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <a href="index.html" class="logo" title="Beranda Performance Group">
+            <img src="../../images/LOGO PRFM2.png" alt="Logo Performance Group PRFM">
+        </a>
+        
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="../../index.html">Beranda</a></li>
+                <li><a href="../../pages/tentang-kami.html">Tentang Kami</a></li>
+                <li><a href="../../index.html#layanan">Layanan</a></li>
+                <li><a href="../../index.html#jaringan">Jaringan</a></li>
+                <li><a href="../../index.html#FAQ">FAQ</a></li>
+                <li><a href="../../index.html#gallery">Gallery</a></li>
+                <li><a href="../../index.html#blog" class="active">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SECTION KUMPULAN ARTIKEL -->
+    <section class="blog-index" style="min-height: calc(100vh - 80px);">
+        <div class="blog-container">
+            <!-- Judul Halaman -->
+            <div class="text-center" style="margin-bottom: 40px;">
+                <span class="badge" style="color: #f5f5f5; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">Pusat Edukasi</span>
+                <h1 class="section-title" style="color: #ffffff; margin-top: 10px;">Semua Artikel & Wawasan</h1>
+                <p style="color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 15px auto 0;">Jelajahi berbagai tips, edukasi teknis, dan strategi bisnis untuk mengembangkan bengkel Anda.</p>
+            </div>
+            
+            <!-- Grid Artikel (10 Skeleton) -->
+            <div class="blog-grid">
+                
+                <div class="blog-card">
+    <!-- Artikel 1 -->
+    <div class="blog-img">
+        <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=600&auto=format&fit=crop" alt="Perawatan Transmisi">
+    </div>
+    
+    <div class="blog-content">
+        <!-- Pengganti skeleton-date -->
+        <span class="blog-date">28 Juli 2026</span>
+        
+        <!-- Pengganti skeleton-title -->
+        <h3>Pentingnya Engine Tune Up Berkala</h3>
+        
+        <!-- Pengganti barisan skeleton-text -->
+        <p>Ketahui tanda-tanda performa mesin menurun dan tindakan preventif yang bisa Anda lakukan di rumah.</p>
+        
+        <!-- Pengganti skeleton-link -->
+        <a href="../artikel/isi artikel/artikel-28-juli-2026-pentingnya-tune-up-berkala.html" class="blog-link">Baca Selengkapnya &rarr;</a>
+    </div>
+</div>
+
+                <!-- Skeleton Card 2 -->
+                <div class="blog-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="blog-content">
+                        <div class="skeleton skeleton-date"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text short"></div>
+                        <div class="skeleton skeleton-link"></div>
+                    </div>
+                </div>
+
+                <!-- Skeleton Card 3 -->
+                <div class="blog-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="blog-content">
+                        <div class="skeleton skeleton-date"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text short"></div>
+                        <div class="skeleton skeleton-link"></div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="blog-content">
+                        <div class="skeleton skeleton-date"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text short"></div>
+                        <div class="skeleton skeleton-link"></div>
+                    </div>
+                </div>
+
+                <!-- Skeleton Card 5 -->
+                <div class="blog-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="blog-content">
+                        <div class="skeleton skeleton-date"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text short"></div>
+                        <div class="skeleton skeleton-link"></div>
+                    </div>
+                </div>
+
+                <!-- Skeleton Card 6 -->
+                <div class="blog-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="blog-content">
+                        <div class="skeleton skeleton-date"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text short"></div>
+                        <div class="skeleton skeleton-link"></div>
+                    </div>
+                </div>
+
+                <!-- Skeleton Card 7 -->
+                <div class="blog-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="blog-content">
+                        <div class="skeleton skeleton-date"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text short"></div>
+                        <div class="skeleton skeleton-link"></div>
+                    </div>
+                </div>
+
+                <!-- Skeleton Card 8 -->
+                <div class="blog-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="blog-content">
+                        <div class="skeleton skeleton-date"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text short"></div>
+                        <div class="skeleton skeleton-link"></div>
+                    </div>
+                </div>
+
+                <!-- Skeleton Card 9 -->
+                <div class="blog-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="blog-content">
+                        <div class="skeleton skeleton-date"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text short"></div>
+                        <div class="skeleton skeleton-link"></div>
+                    </div>
+                </div>
+
+                <!-- Skeleton Card 10 -->
+                <div class="blog-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="blog-content">
+                        <div class="skeleton skeleton-date"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text short"></div>
+                        <div class="skeleton skeleton-link"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- PAGINATION (Tampil Hingga 3) -->
+            <div class="pagination-container">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link next">Selanjutnya &raquo;</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER (Format sama dengan index) -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="../../images/LOGO PRFM2.png" alt="Logo Performance Group" style="height: 40px; margin-bottom: 20px;">
+                <p>Performance Group hadir membantu manajemen bengkel tumbuh berkembang, dan memastikan edukasi teknis tersampaikan secara transparan kepada pemilik kendaraan.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Tautan</h3>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="pages/tentang-kami.html">Tentang Kami</a></li>
+                    <li><a href="index.html#layanan">Layanan</a></li>
+                    <li><a href="bengkel.html">Bengkel Klien</a></li>
+                    <li><a href="#">Blog & Artikel</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Layanan Kami</h3>
+                <ul>
+                    <li><a href="#">Manajemen Operasional</a></li>
+                    <li><a href="#">Ekosistem Bisnis</a></li>
+                    <li><a href="#">Manajemen SDM</a></li>
+                    <li><a href="#">Audit & Pengendalian Mutu</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Kontak Kami</h3>
+                <p style="margin-top: 10px;">WhatsApp:<br><a href="https://wa.me/6282210229588" style="color: #dcf93a;">+62 822-1022-9588</a></p>
+                <p style="margin-top: 10px;">Email:<br><a href="mailto:sahabatperformance1@gmail.com">sahabatperformance1@gmail.com</a></p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 <strong>Performance Group</strong>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Script Menu Mobile -->
+    <script src="script.js"></script>
+</body>
+</html>
