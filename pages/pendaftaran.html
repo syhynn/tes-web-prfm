@@ -8,37 +8,65 @@
     
     <!-- Menghubungkan ke file CSS Utama -->
     <link rel="stylesheet" href="../style.css">
+
+    <!-- CSS Tambahan Khusus untuk Halaman Pendaftaran Murni -->
+    <style>
+        /* Tombol Kembali di Pojok Kiri Atas */
+        .btn-back-corner {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background-color: #222222;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back-corner:hover {
+            background-color: #e61d25;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(230, 29, 37, 0.4);
+        }
+
+        /* Penyesuaian form section untuk mengisi tinggi layar penuh */
+        .form-section {
+            min-height: 100vh !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 5%;
+        }
+
+        @media (max-width: 768px) {
+            .btn-back-corner {
+                top: 20px;
+                left: 20px;
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header / Navigation -->
-    <header>
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-
-        <a href="../index.html" class="logo" title="Beranda Performance Group">
-            <img src="../images/LOGO PRFM2.png" alt="Logo Performance Group PRFM">
-        </a>
-        
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="../index.html#beranda" class="nav-link">Beranda</a></li>
-                <li><a href="tentang-kami.html" class="nav-link">Tentang Kami</a></li>
-                <li><a href="../index.html#layanan" class="nav-link">Layanan</a></li>
-                <li><a href="../index.html#jaringan" class="nav-link">Jaringan</a></li>
-                <li><a href="../index.html#FAQ" class="nav-link">FAQ</a></li>
-                <li><a href="../index.html#gallery" class="nav-link">Gallery</a></li>
-                <li><a href="../index.html#blog" class="nav-link">Blog</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Tombol Kembali Pojok Kiri Atas -->
+    <a href="../index.html" class="btn-back-corner" title="Kembali ke Beranda">
+        &larr; Kembali
+    </a>
 
     <!-- SECTION PENDAFTARAN -->
-    <section class="form-section" id="pendaftaran" style="min-height: 80vh; display: flex; align-items: center;">
-        <div class="form-container" style="width: 100%; margin-top: 40px; margin-bottom: 40px;">
+    <section class="form-section" id="pendaftaran">
+        <div class="form-container" style="width: 100%; max-width: 700px; margin: auto;">
             <div class="form-header">
                 <span class="badge" style="color: #dcf93a; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">Mari Berkolaborasi</span>
                 <h1 class="section-title text-white" style="margin-top: 10px;">Mulai Langkah Perubahan Anda</h1>
@@ -55,7 +83,8 @@
 
                 <div class="input-group">
                     <label for="nomor_wa">Nomor WhatsApp *</label>
-                    <input type="tel" id="nomor_wa" name="nomor_wa" placeholder="Contoh: 08123456789" required>
+                    <!-- Fitur penolakan karakter alfabet/huruf secara instan -->
+                    <input type="tel" id="nomor_wa" name="nomor_wa" placeholder="Contoh: 08123456789" required pattern="[0-9]+" title="Harap masukkan angka saja" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                 </div>
 
                 <div class="input-group">
@@ -70,8 +99,8 @@
                 </div>
 
                 <div class="input-group">
-                    <label for="pesan">Pesan atau Kendala yang Dihadapi (Opsional)</label>
-                    <textarea id="pesan" name="pesan" rows="4" placeholder="Ceritakan singkat mengenai kebutuhan Anda..."></textarea>
+                    <label for="pesan">Pesan atau Kendala yang Dihadapi *</label>
+                    <textarea id="pesan" name="pesan" rows="4" placeholder="Ceritakan singkat mengenai kebutuhan Anda..." required></textarea>
                 </div>
 
                 <!-- Tombol Submit -->
@@ -81,48 +110,6 @@
             </form>
         </div>
     </section>
-
-    <!-- FOOTER -->
-    <footer class="footer-section">
-        <div class="footer-container">
-            <div class="footer-col">
-                <img src="../images/LOGO PRFM2.png" alt="Logo Performance Group" style="height: 40px; margin-bottom: 20px;">
-                <p>Performance Group hadir membantu manajemen bengkel tumbuh berkembang, dan memastikan edukasi teknis tersampaikan secara transparan kepada pemilik kendaraan.</p>
-            </div>
-            
-            <div class="footer-col">
-                <h3>Tautan</h3>
-                <ul>
-                    <li><a href="../index.html#beranda">Beranda</a></li>
-                    <li><a href="tentang-kami.html">Tentang Kami</a></li>
-                    <li><a href="../index.html#layanan">Layanan</a></li>
-                    <li><a href="../index.html#jaringan">Jaringan</a></li>
-                    <li><a href="../index.html#FAQ">FAQ</a></li>
-                    <li><a href="../index.html#gallery">Gallery</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col">
-                <h3>Layanan Kami</h3>
-                <ul>
-                    <li><a href="../index.html#layanan">Manajemen Operasional</a></li>
-                    <li><a href="../index.html#layanan">Ekosistem Bisnis</a></li>
-                    <li><a href="../index.html#layanan">Manajemen SDM</a></li>
-                    <li><a href="../index.html#layanan">Audit & Pengendalian Mutu</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col">
-                <h3>Kontak Kami</h3>
-                <p style="margin-top: 10px;">WhatsApp:<br><a href="https://wa.me/6282210229588" style="color: #dcf93a;">+62 822-1022-9588</a></p>
-                <p style="margin-top: 10px;">Email:<br><a href="mailto:sahabatperformance1@gmail.com">sahabatperformance1@gmail.com</a></p>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2026 <strong>Performance Group</strong>. All rights reserved.</p>
-        </div>
-    </footer>
 
     <!-- Script Menu Mobile -->
     <script src="../script.js"></script>
