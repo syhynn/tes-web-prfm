@@ -83,8 +83,8 @@
 
                 <div class="input-group">
                     <label for="nomor_wa">Nomor WhatsApp *</label>
-                    <!-- Fitur penolakan karakter alfabet/huruf secara instan -->
-                    <input type="tel" id="nomor_wa" name="nomor_wa" placeholder="Contoh: 08123456789" required pattern="[0-9]+" title="Harap masukkan angka saja" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                    <!-- Penambahan minlength="10" dan pembaruan pattern menjadi [0-9]{10,} -->
+                    <input type="tel" id="nomor_wa" name="nomor_wa" placeholder="Contoh: 08123456789" required minlength="10" pattern="[0-9]{10,}" title="Harap masukkan minimal 10 digit angka" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                 </div>
 
                 <div class="input-group">
