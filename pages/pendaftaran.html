@@ -47,6 +47,12 @@
             padding: 80px 5%;
         }
 
+        /* PERBAIKAN: Membatasi textarea agar hanya bisa ditarik vertikal (ke bawah) */
+        .input-group textarea {
+            resize: vertical;
+            max-height: 300px; /* Batas maksimal tarikan ke bawah */
+        }
+
         @media (max-width: 768px) {
             .btn-back-corner {
                 top: 20px;
@@ -68,12 +74,11 @@
     <section class="form-section" id="pendaftaran">
         <div class="form-container" style="width: 100%; max-width: 700px; margin: auto;">
             <div class="form-header">
-                <span class="badge" style="color: #dcf93a; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">Mari Berkolaborasi</span>
-                <h1 class="section-title text-white" style="margin-top: 10px;">Mulai Langkah Perubahan Anda</h1>
-                <p class="form-subtitle">Silakan isi formulir di bawah ini. Tim kami akan segera menghubungi Anda melalui WhatsApp untuk diskusi lebih lanjut.</p>
+                <h1 class="section-title text-white" style="margin-top: 10px;">Konsultasi Layanan Bengkel</h1>
+                <p class="form-subtitle">Isi formulir di bawah ini dan tim kami akan segera menghubungi Anda melalui WhatsApp.</p>
             </div>
 
-            <!-- Ganti 'URL_ENDPOINT_ANDA' dengan link dari Formspree/Web3Forms -->
+            <!-- Endpoint Formspree -->
             <form action="https://formspree.io/f/mwleedyp" method="POST" class="custom-form">
                 
                 <div class="input-group">
@@ -83,7 +88,6 @@
 
                 <div class="input-group">
                     <label for="nomor_wa">Nomor WhatsApp *</label>
-                    <!-- Penambahan minlength="10" dan pembaruan pattern menjadi [0-9]{10,} -->
                     <input type="tel" id="nomor_wa" name="nomor_wa" placeholder="Contoh: 08123456789" required minlength="10" pattern="[0-9]{10,}" title="Harap masukkan minimal 10 digit angka" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                 </div>
 
