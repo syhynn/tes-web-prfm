@@ -10,10 +10,12 @@
     font-family: 'Inter', sans-serif;
 }
 
-body {
+html, body {
     background-color: #222222;
     color: #ffffff;
     overflow-x: hidden;
+    /* Mengunci area pantulan scroll agar tidak menampilkan warna lain */
+    overscroll-behavior-y: none; 
 }
 
 /* =========================================
