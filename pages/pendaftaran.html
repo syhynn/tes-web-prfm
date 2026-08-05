@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran & Konsultasi - Performance Group</title>
+    <link rel="icon" type="image/png" href="../images/FAVICON.svg">
+    
+    <!-- Menghubungkan ke file CSS Utama -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <a href="../index.html" class="logo" title="Beranda Performance Group">
+            <img src="../images/LOGO PRFM2.png" alt="Logo Performance Group PRFM">
+        </a>
+        
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="../index.html#beranda" class="nav-link">Beranda</a></li>
+                <li><a href="tentang-kami.html" class="nav-link">Tentang Kami</a></li>
+                <li><a href="../index.html#layanan" class="nav-link">Layanan</a></li>
+                <li><a href="../index.html#jaringan" class="nav-link">Jaringan</a></li>
+                <li><a href="../index.html#FAQ" class="nav-link">FAQ</a></li>
+                <li><a href="../index.html#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="../index.html#blog" class="nav-link">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SECTION PENDAFTARAN -->
+    <section class="form-section" id="pendaftaran" style="min-height: 80vh; display: flex; align-items: center;">
+        <div class="form-container" style="width: 100%; margin-top: 40px; margin-bottom: 40px;">
+            <div class="form-header">
+                <span class="badge" style="color: #dcf93a; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">Mari Berkolaborasi</span>
+                <h1 class="section-title text-white" style="margin-top: 10px;">Mulai Langkah Perubahan Anda</h1>
+                <p class="form-subtitle">Silakan isi formulir di bawah ini. Tim kami akan segera menghubungi Anda melalui WhatsApp untuk diskusi lebih lanjut.</p>
+            </div>
+
+            <!-- Ganti 'URL_ENDPOINT_ANDA' dengan link dari Formspree/Web3Forms -->
+            <form action="URL_ENDPOINT_ANDA" method="POST" class="custom-form">
+                
+                <div class="input-group">
+                    <label for="nama_lengkap">Nama Lengkap / Nama Bengkel *</label>
+                    <input type="text" id="nama_lengkap" name="nama_lengkap" placeholder="Masukkan nama Anda" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="nomor_wa">Nomor WhatsApp *</label>
+                    <input type="tel" id="nomor_wa" name="nomor_wa" placeholder="Contoh: 08123456789" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="layanan">Layanan yang Dibutuhkan *</label>
+                    <select id="layanan" name="layanan" required>
+                        <option value="" disabled selected>-- Pilih Layanan --</option>
+                        <option value="PRFM">Konsultasi Bisnis (PRFM)</option>
+                        <option value="Solusi Akademi">Program Training (Solusi Akademi)</option>
+                        <option value="Towing PRFM">Layanan Derek (Towing PRFM)</option>
+                        <option value="Edukasi Otomotif">Edukasi Teknis Otomotif</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="pesan">Pesan atau Kendala yang Dihadapi (Opsional)</label>
+                    <textarea id="pesan" name="pesan" rows="4" placeholder="Ceritakan singkat mengenai kebutuhan Anda..."></textarea>
+                </div>
+
+                <!-- Tombol Submit -->
+                <button type="submit" class="btn-submit">
+                    Kirim Permintaan &rarr;
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="../images/LOGO PRFM2.png" alt="Logo Performance Group" style="height: 40px; margin-bottom: 20px;">
+                <p>Performance Group hadir membantu manajemen bengkel tumbuh berkembang, dan memastikan edukasi teknis tersampaikan secara transparan kepada pemilik kendaraan.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Tautan</h3>
+                <ul>
+                    <li><a href="../index.html#beranda">Beranda</a></li>
+                    <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                    <li><a href="../index.html#layanan">Layanan</a></li>
+                    <li><a href="../index.html#jaringan">Jaringan</a></li>
+                    <li><a href="../index.html#FAQ">FAQ</a></li>
+                    <li><a href="../index.html#gallery">Gallery</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Layanan Kami</h3>
+                <ul>
+                    <li><a href="../index.html#layanan">Manajemen Operasional</a></li>
+                    <li><a href="../index.html#layanan">Ekosistem Bisnis</a></li>
+                    <li><a href="../index.html#layanan">Manajemen SDM</a></li>
+                    <li><a href="../index.html#layanan">Audit & Pengendalian Mutu</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Kontak Kami</h3>
+                <p style="margin-top: 10px;">WhatsApp:<br><a href="https://wa.me/6282210229588" style="color: #dcf93a;">+62 822-1022-9588</a></p>
+                <p style="margin-top: 10px;">Email:<br><a href="mailto:sahabatperformance1@gmail.com">sahabatperformance1@gmail.com</a></p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 <strong>Performance Group</strong>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Script Menu Mobile -->
+    <script src="../script.js"></script>
+</body>
+</html>
